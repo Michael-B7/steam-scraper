@@ -14,8 +14,25 @@ def get_top():
     
     for i in range(0, len(games)):
         names.append(games[i].find('a'))
+        
+    players = top.find_all(class_ = 'num')
     
-    return names
+    playersC = players[:]
+    
+    for i in range(0,len(players)):
+        if not i % 3 == 0:
+            playersC.remove(players[i])
+    
+    players = []
+    players = playersC[:]
+    
+    data = []
+    
+    for i in range(0,len(names)):
+        data.append(names[i])
+        data.append(players[i])
+    
+    return data
 
 def get_data(game):
 
@@ -72,12 +89,14 @@ def clean(data):
         
     return data
 
-def pair(names, players):
+def pair(data):
+    
     pairs = {}
     
-    for i in range(0,len(names)):
-        pairs.update({names[i]:players[i]})
+    for i in range(0,len(data)):
+        if i % 2 == 0:
+            pairs.update({data[i]:data[i+1]})
     
     return pairs
 
-print(clean(get_top()))
+print(pair(clean(get_top())))
