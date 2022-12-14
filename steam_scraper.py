@@ -33,44 +33,44 @@ def get_data(game):
 
     return names
 
-def clean(names):
+def clean(data):
 
-    for i in range(0,len(names)):
-        names[i] = str(names[i])
+    for i in range(0,len(data)):
+        data[i] = str(data[i])
 
     removes = []
     
-    for a in range(0,len(names)):
-        name = str(names[a])
-        for i in range(0,len(name)):
-            if name[i:i+1] == '<':
+    for a in range(0,len(data)):
+        val = str(data[a])
+        for i in range(0,len(val)):
+            if val[i:i+1] == '<':
                 remove = ''
-                for j in range(i,len(name)):
-                    remove = remove + str(name)[j:j+1]
-                    if name[j:j+1] == '>':
+                for j in range(i,len(val)):
+                    remove = remove + str(val)[j:j+1]
+                    if val[j:j+1] == '>':
                         break
                 removes.append(remove)
                 remove = ''
     
-    namesTemp = []
+    dataTemp = []
     
-    for a in range(0, len(names)):
+    for a in range(0, len(data)):
         
-        name = str(names[a])
+        val = str(data[a])
         
         for i in range(a,len(removes)):
-            name = name.replace(removes[i], '')
+            val = val.replace(removes[i], '')
             
-        name = name.replace('\n', '')
-        name = name.replace('\t', '')
-        namesTemp.append(name)
+        val = val.replace('\n', '')
+        val = val.replace('\t', '')
+        dataTemp.append(val)
     
-    namesC = []
+    data = []
 
-    for name in namesTemp:
-        namesC.append(name)
+    for val in dataTemp:
+        data.append(val)
         
-    return namesC
+    return data
 
 def pair(names, players):
     pairs = {}
