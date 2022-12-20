@@ -89,14 +89,19 @@ def clean(data):
         
     return data
 
-def pair(data):
+def separate(data):
     
-    pairs = {}
+    data1 = []
+    names = []
+    players = []
     
     for i in range(0,len(data)):
         if i % 2 == 0:
-            pairs.update({data[i]:data[i+1]})
+            names.append(data[i])
+        else:
+            players.append(data[i])
     
-    return pairs
-
-print(pair(clean(get_top())))
+    data1.append(names)
+    data1.append(players)
+    
+    return data1
