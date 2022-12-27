@@ -12,5 +12,5 @@ def setup(data):
     
     
 
-data = ss.separate(ss.clean(ss.get_top()))        
+       
 
