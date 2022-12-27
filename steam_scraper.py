@@ -105,3 +105,5 @@ def separate(data):
     data1.append(players)
     
     return data1
+
+print(separate(clean(get_top())))
